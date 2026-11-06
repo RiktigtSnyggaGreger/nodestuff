@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
 function ToDoList() {
-    const [todos, setTodos] = useState([]);
     const [input, setInput] = useState('');
 
+    const [todos, setTodos] = useState(() => {
+        /* Hämtar sparade todos från localStorage, eller en tom lista om inget finns */
+        const saved = localStorage.getItem('todos');
+        return saved ? JSON.parse(saved) : [];
+    });
+
+    useEffect(() => {
+        /* Sparar todos i localStorage varje gång listan ändras */
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
 
     const handleAdd = () => {
         if (input.trim() === '')
