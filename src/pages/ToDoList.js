@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import "/home/edwinlund/nodestuff/my-react-app/src/pages/Fin.css";
 
 function ToDoList() {
     const [input, setInput] = useState('');
@@ -35,7 +35,7 @@ function ToDoList() {
     
     return (
         <div>
-            <h1>To Do List Page</h1>
+            <h1 className="style">To Do List Page</h1>
             <textarea
                 placeholder='What to do...?'
                 value={input}
